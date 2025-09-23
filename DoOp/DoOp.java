@@ -1,4 +1,3 @@
-package DoOp;
 public class DoOp {
     public static String operate(String[] args) {
         if (args.length < 3) {
