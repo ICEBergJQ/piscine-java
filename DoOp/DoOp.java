@@ -8,35 +8,33 @@ public class DoOp {
         try {
             left = Integer.parseInt(args[0]);
             right = Integer.parseInt(args[2]);
+            String op = args[1];
+            int result;
+    
+            switch (op) {
+                case "+":
+                    result = left + right;
+                    break;
+                case "-":
+                    result = left - right;
+                    break;
+                case "*":
+                    result = left * right;
+                    break;
+                case "/":
+                    if (right == 0) return "Error";
+                    result = left / right;
+                    break;
+                case "%":
+                    if (right == 0) return "Error";
+                    result = left % right;
+                    break;
+                default:
+                    return "Error";
+            }
+            return String.valueOf(result);
         } catch (NumberFormatException e) {
             return "Error";
         }
-
-        String op = args[1];
-        int result;
-
-        switch (op) {
-            case "+":
-                result = left + right;
-                break;
-            case "-":
-                result = left - right;
-                break;
-            case "*":
-                result = left * right;
-                break;
-            case "/":
-                if (right == 0) return "Error";
-                result = left / right;
-                break;
-            case "%":
-                if (right == 0) return "Error";
-                result = left % right;
-                break;
-            default:
-                return "Error";
-        }
-
-        return String.valueOf(result);
     }
 }
