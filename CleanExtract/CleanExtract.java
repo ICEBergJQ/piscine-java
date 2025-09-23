@@ -36,18 +36,21 @@ public class CleanExtract {
          if (result.endsWith(" .")) {
             result = result.replace(" .", "");
             result = result.replace(".", "");
+            if (result.isEmpty()) {
+                return result;
+            }
             return result + " .";
         }
 
         if (result.endsWith(".")) {
             result = result.replace(" .", "");
             result = result.replace(".", "");
+            if (result.isEmpty()) {
+                return result;
+            }
             return result + ".";
         }
 
         return result.replace(".", "");
     }
 }
-
-// 'The quick brown fox Jumps over the lazy dog.', 'The quick brown what do you fox Jumps over the lazy dog.' was returned
-// java.lang.AssertionError: Should return 'The quick brown fox Jumps over the lazy dog.', 'The quick brown what do you fox Jumps over the lazy dog.'
