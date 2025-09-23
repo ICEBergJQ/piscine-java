@@ -20,9 +20,11 @@ public class CleanExtract {
             part = temp.replace(".", "");
             part = part.trim();
             if (flag) {
-                part = part+".";
+                part = part + ".";
             }
-
+            // if (part == "." && y == parts.length - 1) {
+            //     continue;
+            // }
             if (!part.isEmpty()) {
                 if (result.length() > 0) {
                     result+= " ";
@@ -31,6 +33,11 @@ public class CleanExtract {
             }
         }
         // System.out.println("\'"+result+"\'");
+         if (result.endsWith(" .")) {
+            result = result.replace(" .", "");
+            result = result.replace(".", "");
+            return result + " .";
+        }
 
         if (result.endsWith(".")) {
             result = result.replace(" .", "");
