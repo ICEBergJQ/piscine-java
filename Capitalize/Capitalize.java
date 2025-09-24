@@ -15,13 +15,9 @@ public class Capitalize {
                 BufferedReader reader = new BufferedReader(new FileReader(inputFile));
                 BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
             String line;
-            Boolean firstLine = true;
             while ((line = reader.readLine()) != null) {
                 writer.write(capitalizeLine(line));
-                if (!firstLine) {
-                    writer.newLine();
-                }
-                firstLine = false;
+                // firstLine = false;
 
             }
         }
