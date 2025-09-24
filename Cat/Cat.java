@@ -1,6 +1,3 @@
-package Cat;
-
-// import java.util.Scanner;
 import java.io.*;
 
 public class Cat {
