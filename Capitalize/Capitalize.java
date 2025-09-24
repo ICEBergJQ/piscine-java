@@ -21,7 +21,7 @@ public class Capitalize {
             String content = new String(Files.readAllBytes(Paths.get(inputFile)), StandardCharsets.UTF_8);
             String[] lines = content.split("\n", -1); 
             for (int i = 0; i < lines.length; i++) {
-                writer.write(capitalizeLine(lines[i]));
+                writer.write(capitalizeLine(lines[i].trim()));
                 if (i < lines.length - 1) {
                     writer.newLine();
                 }
