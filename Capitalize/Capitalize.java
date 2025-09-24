@@ -1,10 +1,14 @@
 
 // package Capitalize;
+
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class Capitalize {
     public static void capitalize(String[] args) throws IOException {
-        if (args.length < 2) {
+        if (args.length != 2) {
             return;
         }
 
@@ -14,14 +18,19 @@ public class Capitalize {
         try (
                 BufferedReader reader = new BufferedReader(new FileReader(inputFile));
                 BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                writer.write(capitalizeLine(line));
-                // firstLine = false;
-
+            String content = new String(Files.readAllBytes(Paths.get(inputFile)), StandardCharsets.UTF_8);
+            String[] lines = content.split("\n", -1); 
+            for (int i = 0; i < lines.length; i++) {
+                writer.write(capitalizeLine(lines[i]));
+                if (i < lines.length - 1) {
+                    writer.newLine();
+                }
             }
+            writer.close();
+
         }
     }
+
 
     private static String capitalizeLine(String line) {
         StringBuilder sb = new StringBuilder();
