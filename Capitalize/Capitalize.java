@@ -35,6 +35,7 @@ public class Capitalize {
     private static String capitalizeLine(String line) {
         StringBuilder sb = new StringBuilder();
         boolean capitalizeNext = true;
+        String result = "";
 
         for (char c : line.toCharArray()) {
             if (Character.isWhitespace(c)) {
@@ -47,6 +48,11 @@ public class Capitalize {
                 sb.append(Character.toLowerCase(c));
             }
         }
-        return sb.toString();
+        for (String str : sb.toString().split("\\s+")) {
+            if (!str.isEmpty()) {
+                result += str + " ";
+            }
+        }
+        return result.trim();
     }
 }
