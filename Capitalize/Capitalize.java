@@ -1,3 +1,4 @@
+
 // package Capitalize;
 import java.io.*;
 
@@ -11,13 +12,17 @@ public class Capitalize {
         String outputFile = args[1];
 
         try (
-            BufferedReader reader = new BufferedReader(new FileReader(inputFile));
-            BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))
-        ) {
+                BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+                BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))) {
             String line;
+            Boolean firstLine = true;
             while ((line = reader.readLine()) != null) {
                 writer.write(capitalizeLine(line));
-                writer.newLine();
+                if (!firstLine) {
+                    writer.newLine();
+                }
+                firstLine = false;
+
             }
         }
     }
