@@ -8,27 +8,19 @@ public class Star extends CelestialObject {
         this.magnitude = 0.0;
     }
 
-    public Star(String name, double x, double y, double z, double magnitude) {
-        super(name, x, y, z);
+    public Star(String name, double x, double y, double z, double magnitude, int mass) {
+        super(name, x, y, z, mass);
         this.magnitude = magnitude;
     }
 
-    public double getMagnitude() {
-        return magnitude;
-    }
-
-    public void setMagnitude(double magnitude) {
-        this.magnitude = magnitude;
-    }
+    public double getMagnitude() { return magnitude; }
+    public void setMagnitude(double magnitude) { this.magnitude = magnitude; }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (!(o instanceof Star))
-            return false;
-        if (!super.equals(o))
-            return false;
+        if (this == o) return true;
+        if (!(o instanceof Star)) return false;
+        if (!super.equals(o)) return false;
         Star star = (Star) o;
         return Double.compare(star.magnitude, magnitude) == 0;
     }
