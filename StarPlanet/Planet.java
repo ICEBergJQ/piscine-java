@@ -23,17 +23,16 @@ public class Planet extends CelestialObject {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (!(o instanceof Planet))
-            return false;
+        if (this == o) return true;
+        if (!(o instanceof Planet)) return false;
+        if (!super.equals(o)) return false;
         Planet planet = (Planet) o;
         return Objects.equals(centerStar, planet.centerStar);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(centerStar);
+        return Objects.hash(super.hashCode(), centerStar);
     }
 
     @Override
