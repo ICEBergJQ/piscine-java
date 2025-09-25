@@ -1,13 +1,9 @@
-package StarGetters;
-
 public class CelestialObject {
-    // private properties
     private double x;
     private double y;
     private double z;
     private String name;
 
-    // default constructor
     public CelestialObject() {
         this.x = 0.0;
         this.y = 0.0;
@@ -15,7 +11,6 @@ public class CelestialObject {
         this.name = "Soleil";
     }
 
-    // getters
     public double getX() {
         return x;
     }
@@ -32,7 +27,6 @@ public class CelestialObject {
         return name;
     }
 
-    // setters
     public void setX(double x) {
         this.x = x;
     }
