@@ -1,3 +1,4 @@
+// package StarGetters;
 public class CelestialObject {
     private double x;
     private double y;
@@ -19,19 +20,19 @@ public class CelestialObject {
     }
 
     public double getX() {
-        return x;
+        return this.x;
     }
 
     public double getY() {
-        return y;
+        return this.y;
     }
 
     public double getZ() {
-        return z;
+        return this.z;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setX(double x) {
