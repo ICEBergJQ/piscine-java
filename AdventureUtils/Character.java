@@ -24,7 +24,7 @@ public class Character {
         }
         StringBuilder sb = new StringBuilder();
         for (Character c : allCharacters) {
-            sb.append(c.toString()).append("\n");
+            sb.append(" - " + c.toString()).append("\n");
         }
         return "------------------------------------------\n" +
                 "Characters currently fighting :\n" + sb.toString() +
