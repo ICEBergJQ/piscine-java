@@ -1,6 +1,5 @@
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Stream;
+import java.util.*;
+import java.util.stream.*;
 
 public class StreamMap {
     public static Integer sumOfStringLength(Stream<String> s) {
@@ -8,12 +7,12 @@ public class StreamMap {
     }
 
     public static List<String> upperCaseAllString(Stream<String> s) {
-        return s.map(String::toUpperCase).toList();
+        return s.map(String::toUpperCase).collect(Collectors.toList());
     }
-    
+
     public static Set<Integer> uniqIntValuesGreaterThan42(Stream<Double> s) {
-        return s.map(Double::intValue)
-                .filter(n -> n > 42)
-                .collect(java.util.stream.Collectors.toSet());
+        return s.filter(d -> d > 42)
+                .map(Double::intValue)
+                .collect(Collectors.toSet());
     }
 }
