@@ -4,25 +4,20 @@ import java.util.regex.Pattern;
 public class RegexReplace {
 
     public static String removeUnits(String s) {
-        if (s == null)
-            return null;
-
+        if (s == null) return null;
         return s.replaceAll("(\\d+)(cm|€)(?=\\s|$)", "$1");
     }
 
     public static String obfuscateEmail(String s) {
-        if (s == null)
-            return null;
+        if (s == null) return null;
 
         String[] parts = s.split("@");
-        if (parts.length != 2)
-            return s;
+        if (parts.length != 2) return s;
 
         String username = parts[0];
         String domain = parts[1];
 
         username = obfuscateUsername(username);
-
         domain = obfuscateDomain(domain);
 
         return username + "@" + domain;
