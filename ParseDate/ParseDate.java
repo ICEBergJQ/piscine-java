@@ -12,10 +12,12 @@ import java.util.regex.Pattern;
 public class ParseDate {
 
     public static LocalDateTime parseIsoFormat(String stringDate) {
+        if (stringDate == null) return null;
         return LocalDateTime.parse(stringDate);
     }
 
     public static LocalDate parseFullTextFormat(String stringDate) {
+        if (stringDate == null) return null;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE dd MMMM yyyy", Locale.ENGLISH);
         return LocalDate.parse(stringDate, formatter);
     }
