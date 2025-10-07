@@ -4,15 +4,18 @@ import java.util.regex.Pattern;
 public class RegexReplace {
 
     public static String removeUnits(String s) {
-        if (s == null) return null;
+        if (s == null)
+            return null;
         return s.replaceAll("(\\d+)(cm|€)(?=\\s|$)", "$1");
     }
 
     public static String obfuscateEmail(String s) {
-        if (s == null) return null;
+        if (s == null)
+            return null;
 
         String[] parts = s.split("@");
-        if (parts.length != 2) return s;
+        if (parts.length != 2)
+            return s;
 
         String username = parts[0];
         String domain = parts[1];
@@ -25,11 +28,21 @@ public class RegexReplace {
 
     private static String obfuscateUsername(String username) {
         if (username.matches(".*[-._].*")) {
-            return username.replaceAll("(?<=[-._]).", "*");
+            String res = "";
+            String[] parts = username.split("(?=[-._])|(?<=[-._])");
+
+            for (int i = 0; i < parts.length; i++) {
+                if (i != 0 && !parts[i].matches("[-._]")) {
+                    res += parts[i].replaceAll(".", "*");
+                } else {
+                    res += parts[i];
+                }
+            }
+            return res;
         }
 
         if (username.length() > 3) {
-            return username.substring(0, username.length() - 3) + "***";
+            return username.substring(0, 3) + "*".repeat(username.length()-3);
         }
         return username;
     }
