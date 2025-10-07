@@ -16,6 +16,9 @@ public class ParseDate {
     }
 
     public static LocalTime parseTimeFormat(String stringDate) {
+        if (stringDate == null) {
+            return null;
+        }
         String lower = stringDate.toLowerCase();
 
         int hours = Integer.parseInt(lower.split(" hours")[0].trim());
