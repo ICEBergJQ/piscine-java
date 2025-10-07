@@ -2,7 +2,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ParseDate {
 
@@ -16,19 +21,33 @@ public class ParseDate {
     }
 
     public static LocalTime parseTimeFormat(String stringDate) {
-        if (stringDate == null) {
+        if (stringDate == null)
             return null;
+
+        stringDate = stringDate.toLowerCase();
+
+        Pattern pattern = Pattern.compile("(\\d+)");
+        Matcher matcher = pattern.matcher(stringDate);
+
+        int[] values = new int[3];
+        int i = 0;
+
+        while (matcher.find() && i < 3) {
+            values[i++] = Integer.parseInt(matcher.group(1));
         }
-        String lower = stringDate.toLowerCase();
 
-        int hours = Integer.parseInt(lower.split(" hours")[0].trim());
-        int minutes = Integer.parseInt(lower.split(" ")[6].trim());
-        int seconds = Integer.parseInt(lower.split(" ")[10].trim());
+        int hour = values[0];
+        int minute = values[1];
+        int second = values[2];
 
-        if (lower.contains("evening") && hours < 12) {
-            hours += 12;
+        if (stringDate.contains("evening") || stringDate.contains("afternoon")) {
+            if (hour < 12)
+                hour += 12;
+        } else if (stringDate.contains("morning") && hour == 12) {
+            hour = 0;
         }
 
-        return LocalTime.of(hours, minutes, seconds);
+        return LocalTime.of(hour, minute, second);
     }
+
 }
